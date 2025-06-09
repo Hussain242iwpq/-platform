@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة السادس - نسخة مسربة</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>مرحبًا بك في نسخة مسربة من منصة السادس</h1>
+
+  <div class="section">
+    <h2>بيانات (data.json)</h2>
+    <pre id="data1">جاري التحميل...</pre>
+  </div>
+
+  <div class="section">
+    <h2>بيانات إضافية (data2.json)</h2>
+    <pre id="data2">جاري التحميل...</pre>
+  </div>
+
+  <script>
+    async function loadData() {
+      try {
+        const data1 = await fetch('data.json').then(res => res.json());
+        const data2 = await fetch('data2.json').then(res => res.json());
+
+        document.getElementById('data1').textContent = JSON.stringify(data1, null, 2);
+        document.getElementById('data2').textContent = JSON.stringify(data2, null, 2);
+      } catch (error) {
+        document.getElementById('data1').textContent = 'فشل في تحميل البيانات';
+        document.getElementById('data2').textContent = 'فشل في تحميل البيانات';
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
